@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div>
+        <h1>Task Manager</h1>
+        <p class="subtitle">Задачи, теги, дедлайны и быстрый поиск</p>
+      </div>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Сменить тему">
+        Сменить тему
+      </button>
+    </header>
+
+    <section class="card">
+      <h2>Добавить задачу</h2>
+      <form id="taskForm" class="task-form">
+        <label class="field">
+          <span>Название</span>
+          <input id="titleInput" type="text" placeholder="Например: Подготовить отчёт" required>
+        </label>
+
+        <label class="field">
+          <span>Описание</span>
+          <textarea id="descriptionInput" rows="3" placeholder="Необязательно"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Дедлайн</span>
+          <input id="deadlineInput" type="date">
+        </label>
+
+        <div class="field">
+          <span>Теги</span>
+          <div class="tag-create-row">
+            <input id="newTagInput" type="text" placeholder="Новый тег">
+            <button id="createTagBtn" class="secondary" type="button">Создать тег</button>
+          </div>
+          <div id="tagOptions" class="tag-options"></div>
+        </div>
+
+        <button type="submit">Добавить задачу</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2>Список задач</h2>
+      <div class="toolbar">
+        <input id="searchInput" type="search" placeholder="Поиск по названию, описанию, тегам">
+      </div>
+      <div id="taskList" class="task-list"></div>
+      <p id="emptyState" class="empty-state">Пока нет задач</p>
+    </section>
+  </main>
+
+  <dialog id="editDialog">
+    <form id="editForm" class="edit-form" method="dialog">
+      <h3>Редактирование задачи</h3>
+      <label class="field">
+        <span>Название</span>
+        <input id="editTitleInput" type="text" required>
+      </label>
+      <label class="field">
+        <span>Описание</span>
+        <textarea id="editDescriptionInput" rows="3"></textarea>
+      </label>
+      <label class="field">
+        <span>Дедлайн</span>
+        <input id="editDeadlineInput" type="date">
+      </label>
+      <div class="field">
+        <span>Теги</span>
+        <div id="editTagOptions" class="tag-options"></div>
+      </div>
+      <div class="edit-actions">
+        <button type="button" id="cancelEditBtn" class="secondary">Отмена</button>
+        <button type="submit">Сохранить</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

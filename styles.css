@@ -1,0 +1,258 @@
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666b76;
+  --accent: #f6d87a;
+  --accent-strong: #efc85d;
+  --border: #d7dbe3;
+  --danger-bg: #ffe9e9;
+  --danger-border: #ef4444;
+  --shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+}
+
+body[data-theme="dark"] {
+  --bg: #13151c;
+  --surface: #1d212b;
+  --text: #f3f5f8;
+  --muted: #a8b1c1;
+  --accent: #f3cf6f;
+  --accent-strong: #e5bb4d;
+  --border: #303748;
+  --danger-bg: #3a1d24;
+  --danger-border: #fb7185;
+  --shadow: 0 18px 32px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(246, 216, 122, 0.22), transparent 40%),
+    radial-gradient(circle at 90% 85%, rgba(239, 200, 93, 0.16), transparent 35%),
+    var(--bg);
+  color: var(--text);
+}
+
+.app {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 16px 60px;
+}
+
+.app-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-top: 14px;
+  box-shadow: var(--shadow);
+}
+
+.task-form,
+.edit-form {
+  display: grid;
+  gap: 12px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+}
+
+.field > span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  padding: 10px;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--accent), #ffffff 70%);
+  outline-offset: 1px;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: var(--accent-strong);
+  color: #3f2e00;
+  cursor: pointer;
+}
+
+button:hover {
+  background: color-mix(in srgb, var(--accent-strong), #000 10%);
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+button.secondary:hover {
+  background: color-mix(in srgb, var(--surface), #000 4%);
+}
+
+.theme-toggle {
+  white-space: nowrap;
+}
+
+.tag-create-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.tag-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 13px;
+}
+
+.toolbar {
+  margin-bottom: 10px;
+}
+
+.task-list {
+  display: grid;
+  gap: 10px;
+}
+
+.task-item {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: color-mix(in srgb, var(--surface), #000 1%);
+}
+
+.task-item.overdue {
+  border-color: var(--danger-border);
+  background: var(--danger-bg);
+}
+
+.task-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.task-title {
+  margin: 0;
+}
+
+.task-description {
+  margin: 8px 0;
+  color: var(--muted);
+  white-space: pre-wrap;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.deadline.overdue {
+  font-weight: 700;
+  color: #dc2626;
+}
+
+body[data-theme="dark"] .deadline.overdue {
+  color: #fb7185;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.empty-state {
+  color: var(--muted);
+}
+
+dialog {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0;
+  width: min(580px, 95vw);
+  background: var(--surface);
+  color: var(--text);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.edit-form {
+  padding: 14px;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+@media (max-width: 650px) {
+  .app-header {
+    flex-direction: column;
+  }
+
+  .tag-create-row {
+    grid-template-columns: 1fr;
+  }
+}
